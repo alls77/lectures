@@ -1,0 +1,104 @@
+class X(int):
+	x=123
+	def f(self):
+		pass
+
+
+Y  = type('Y', (int,), {'x': 123, 'f': lambda self: None})
+
+
+def new_enum(name, keys):
+	return type(name, (), {key: i for i, key in enumerate(keys)})
+
+E = new_enum('E', ['test', 'foo', 'bar'])
+
+E.test #0
+E.foo  #1
+E.bar  #2
+
+
+переопределение new
+
+class X:
+	def __new__(cls, a,b, x=123):
+		self = super().__new__(cls)
+		self.x =x
+		return self
+
+	def __init__(self,a,b):
+		self.a =a
+		self.b =b
+
+
+#если надо что-то сделать с типом immutable
+class MyInt(int):
+	def __new__(cls, x):
+		return super().__new__(cls, x*2)
+
+
+	def __init__(self,x):
+		self.x =x
+
+#при написании библиотек изменять значение без переписывания кода (или как-то преобразовывать)
+
+метаклассы - для конструирования классов
+class Meta(type):
+	pass
+
+class X(metaclass=Meta):
+	x = 1
+	y = 2
+
+--------------------------------
+
+class Meta(type):
+	def __new__(mcls, name, bases, namespace):
+		namespace['xxx'] = 'xxx'
+		return super().__new__(mcls, name, bases, namespace)
+
+class X(metaclass = Meta):
+	x = 1
+	y = 2
+
+X.xxx  #'xxx'
+
+-------------------------------
+
+class IntVal:
+	def __init__(self,name):
+		self.name =name
+
+	def __get__(self,obj, cls = None):
+		return getattr(obj, '_'+self.name)
+
+	def __set__(self,obj, value):
+		assert isinstance(value, int)
+		setattr(obj, '_'+self.name, value)
+
+
+class AnnotateMeta(type):
+	def __new__(mcls, name, bases, namespace):
+		for attr, value in namespace.get("__annotation__",{}).items():
+			if value is INT:
+				namespace[attr] = IntVal(attr)
+		return super().__new__(mcls, name, bases, namespace)
+
+class X(metaclass = AnnotateMeta):
+	x = INT
+	y = INT
+
+все методы метакласса доступны у инстанса объекта класса
+
+
+----------------------------------------------------------
+
+саll - если надо хранить состояние
+вызов инстанса объекта как метода
+----------------------------------------------------------
+
+
+
+
+
+
+

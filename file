@@ -1,0 +1,21 @@
+OPERATORS ={}
+
+def op(name):
+	def der(fn):
+		OPERATORS[name] = fn
+		return fn
+	return der
+
+@op("+")
+def plus(a,b):
+	return a+b
+
+
+print(OPERATORS)
+
+class X:
+	def __init__(self, x):
+		self._x = x
+
+		
+		
