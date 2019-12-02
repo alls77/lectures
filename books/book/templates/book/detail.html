@@ -1,3 +1,18 @@
+{% load static %} <!--load static file-->
+
+{% extend 'base.html' %}
+
+{% include 'polls/base' obj as rel_obj %} <!--peredacha obj-->
+
+{% block content %} <!--content - block-name-->
+
+{% block child%} <!--ierarh. blokov-->
+{% endblock %}
+
+{% block.super %} <!--render. text from base.html + content of this block-->
+
+{% endblock %}
+
 <h1>Author</h1>
 
 <form action="" method="post">
