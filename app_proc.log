@@ -1,0 +1,6 @@
+INFO:logger:pool created
+INFO:logger:process 1 start
+INFO:logger:process 2 start
+INFO:logger:pool closed
+INFO:logger:pool join
+INFO:logger:time - 1.305260419845581

@@ -1,0 +1,6 @@
+INFO:logger:threads created
+INFO:logger:thread 1 start
+INFO:logger:thread 2 start
+INFO:logger:thread 1 join
+INFO:logger:thread 2 join
+INFO:logger:time - 3.12585711479187

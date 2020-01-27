@@ -1,0 +1,8 @@
+INFO:logger:threads created
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.dataatwork.org:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.dataatwork.org:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): api.dataatwork.org:80
+DEBUG:urllib3.connectionpool:http://api.dataatwork.org:80 "GET /v1/jobs/autocomplete?begins_with=%22software%22 HTTP/1.1" 200 6785
+DEBUG:urllib3.connectionpool:http://api.dataatwork.org:80 "GET /v1/jobs/autocomplete?contains=%22software%22 HTTP/1.1" 200 11313
+DEBUG:urllib3.connectionpool:http://api.dataatwork.org:80 "GET /v1/jobs/autocomplete?begins_with=%22engineer%22 HTTP/1.1" 200 14118
+INFO:logger:time - 0.7530100345611572
